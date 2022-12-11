@@ -1,49 +1,46 @@
-# Practice
+start.spring.io
 
-Quiz 8 ) 주어진 코드를 활용하여 부동산 프로그램을 작성하시오.
- (출력 예제)
- 총 3대의 매물이 있습니다.
- 강남 아파트 매매 10억 2010년
- 마포 오피스텔 전세 5억 2007년
- 송파 빌라 월세 500/50 2000년
+welcome page
+templete engine
 
-# [코드]
-class House:
-    매물 초기화
-    def __init__(self, location, house_type, deal_type, price, completion_year):
-        self.location = location
-        self.house_type = house_type
-        self.deal_type = deal_type
-        self.price = price
-        self.completion_year = completion_year
-        
-    매물 정보 표시
-    def show_detail(self):
-        print(self.location, self.house_type, self.deal_type,self.price\
-                ,self.completion_year)
 
-class Gangnam(House):
-    def __init__(self):
-        House.__init__("강남", "아파트", "매매", "10억", "2010년")
+main > java > hello.hellospring > controller 패키지 생성 > HelloControler.java 생성
 
-class Mapo(House):
-    def __init__(self):
-        House.__init__("마포", "오피스텔", "전세", "5억", "2007년")
+HelloController.java 
+==>
+package hello.hellospring.controller;
 
-class Songpa(House):
-    def __init__(self):
-        House.__init__("송파", "빌라", "월세", "500/50", "2000년")
+import org.springframework.ui.Model;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 
-Structure = []
-Structure1 = House("강남", "아파트", "매매", "10억", "2010년")
-Structure2 = House("마포", "오피스텔", "전세", "5억", "2007년")
-Structure3 = House("송파", "빌라", "월세", "500/50", "2000년")
+@Controller
+public class HelloController {
 
-Structure.append(Structure1)
-Structure.append(Structure2)
-Structure.append(Structure3)
+    @GetMapping("hello")
+    public String hello(Model model) {
+        model.addAttribute("data", "hello!!");
+        return "hello";
+    }
+}
+실제 값.
+resources > index.html localhost:8080 메인 페이지?
+==>
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Hello</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+Hello
+<a href="/hello">hello</a>
+</body>
+</html>
 
-print("총 {0}대의 매물이 있습니다.".format(len(Structure)))
+resources > templates > hello.html localhost:8080/hello 서브 페이지??
 
-for House in Structure:
-    House.show_detail()
+===================================================================
+Terminal에서 실행 시키기	ctrl - C 서버 닫기
+cd hello-spring > ./gradlew build > cd build > cd libs >
+> java -jar hello-spring-0.0.1-SNAPSHOT.jar 
